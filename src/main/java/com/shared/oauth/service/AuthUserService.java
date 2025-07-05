@@ -4,6 +4,7 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import java.util.Optional;
 
 public interface AuthUserService {
+
     void syncUserFromJwt(Jwt jwt);
     Optional<? extends Object> findUserByEmail(String email);
     Optional<? extends Object> findUserById(String id);
