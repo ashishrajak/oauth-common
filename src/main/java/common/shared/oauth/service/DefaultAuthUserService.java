@@ -1,4 +1,4 @@
-package com.shared.oauth.service;
+package common.shared.oauth.service;
 
 
 

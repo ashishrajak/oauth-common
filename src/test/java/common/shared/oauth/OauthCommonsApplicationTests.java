@@ -1,4 +1,4 @@
-package com.shared.oauth;
+package common.shared.oauth;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

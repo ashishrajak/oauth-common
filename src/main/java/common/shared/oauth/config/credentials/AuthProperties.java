@@ -1,4 +1,4 @@
-package com.shared.oauth.config.credentials;
+package common.shared.oauth.config.credentials;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

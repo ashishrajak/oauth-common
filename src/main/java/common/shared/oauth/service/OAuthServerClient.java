@@ -1,9 +1,9 @@
-package com.shared.oauth.service;
+package common.shared.oauth.service;
 
 
-import com.shared.oauth.config.credentials.AuthProperties;
-import com.shared.oauth.enums.ErrorEnum;
-import com.shared.oauth.exception.ApiException;
+import common.shared.oauth.config.credentials.AuthProperties;
+import common.shared.oauth.enums.ErrorEnum;
+import common.shared.oauth.exception.ApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;

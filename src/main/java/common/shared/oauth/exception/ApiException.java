@@ -1,9 +1,9 @@
-package com.shared.oauth.exception;
+package common.shared.oauth.exception;
 
 
 
 
-import com.shared.oauth.enums.ErrorEnum;
+import common.shared.oauth.enums.ErrorEnum;
 
 import java.util.ArrayList;
 import java.util.List;

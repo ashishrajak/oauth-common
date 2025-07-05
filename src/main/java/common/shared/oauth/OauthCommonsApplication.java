@@ -1,4 +1,4 @@
-package com.shared.oauth;
+package common.shared.oauth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

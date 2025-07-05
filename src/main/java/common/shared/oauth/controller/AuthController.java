@@ -1,8 +1,8 @@
-package com.shared.oauth.controller;
+package common.shared.oauth.controller;
 
 
-import com.shared.oauth.exception.ApiException;
-import com.shared.oauth.service.TokenExchangeService;
+import common.shared.oauth.exception.ApiException;
+import common.shared.oauth.service.TokenExchangeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.web.bind.annotation.PostMapping;

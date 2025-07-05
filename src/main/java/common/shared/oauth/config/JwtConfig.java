@@ -1,4 +1,4 @@
-package com.shared.oauth.config;
+package common.shared.oauth.config;
 
 
 import org.springframework.context.annotation.Bean;

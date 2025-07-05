@@ -1,4 +1,4 @@
-package com.shared.oauth.enums;
+package common.shared.oauth.enums;
 
 public enum HttpStatus {
 
