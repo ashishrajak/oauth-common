@@ -68,6 +68,13 @@
 		</repository>
 	</distributionManagement>
 
+	<repositories>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/ashishrajak/oauth-common</url>
+		</repository>
+	</repositories>
+
 	<build>
 		<plugins>
 			<plugin>
