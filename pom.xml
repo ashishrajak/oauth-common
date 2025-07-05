@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.shared</groupId>
-	<artifactId>oauth-commons</artifactId>
+	<artifactId>oauth-common</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oauth-commons</name>
 	<description>Shared OAuth controller for Spring</description>
