@@ -1,4 +1,4 @@
-package common.shared.oauth.service;
+package com.shared.oauth.service;
 
 import org.springframework.security.oauth2.jwt.Jwt;
 import java.util.Optional;

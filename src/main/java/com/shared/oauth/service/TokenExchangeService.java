@@ -1,4 +1,4 @@
-package common.shared.oauth.service;
+package com.shared.oauth.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;

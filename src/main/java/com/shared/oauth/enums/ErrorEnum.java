@@ -1,4 +1,4 @@
-package common.shared.oauth.enums;
+package com.shared.oauth.enums;
 
 
 
