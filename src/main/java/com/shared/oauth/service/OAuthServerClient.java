@@ -4,17 +4,20 @@ package com.shared.oauth.service;
 import com.shared.oauth.config.credentials.AuthProperties;
 import com.shared.oauth.enums.ErrorEnum;
 import com.shared.oauth.exception.ApiException;
+import com.shared.oauth.model.dto.users.UserInfoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
@@ -42,7 +45,7 @@ public class OAuthServerClient {
 
 
         return webClient.post()
-                .uri(authProperties.getTokenUrl())
+                .uri(authProperties.getBaseUrl()+"/oauth2/token")
                 .header(HttpHeaders.AUTHORIZATION, getBasicAuthHeader())
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 .body(BodyInserters.fromFormData(buildTokenRequest(code, redirectUri, codeVerifier)))
@@ -80,4 +83,35 @@ public class OAuthServerClient {
                         ErrorEnum.BAD_REQUEST
                 )));
     }
+
+
+    private UserInfoResponse fetchUserInfo(Jwt jwt) {
+        try {
+            return webClient.get()
+                    .uri(authProperties.getBaseUrl()+"/oauth2/userinfo")  // Use configured userinfo endpoint
+                    .headers(headers -> headers.setBearerAuth(jwt.getTokenValue()))
+                    .retrieve()
+                    .onStatus(
+                            HttpStatusCode::isError,
+                            response -> response.bodyToMono(String.class)
+                                    .flatMap(errorBody -> Mono.error(new ApiException(
+                                            ErrorEnum.UNAUTHORIZED_ACCESS,
+                                            "Failed to fetch user info: " + response.statusCode() + " - " + errorBody
+                                    )))
+                    )
+                    .bodyToMono(UserInfoResponse.class)
+                    .block();
+        } catch (WebClientResponseException ex) {
+            throw new ApiException(
+                    ErrorEnum.UNAUTHORIZED_ACCESS,
+                    "OAuth server error: " + ex.getStatusCode() + " - " + ex.getResponseBodyAsString()
+            );
+        } catch (Exception ex) {
+            throw new ApiException(
+                    ErrorEnum.INTERNAL_SERVER_ERROR,
+                    "Unexpected error fetching user info: " + ex.getMessage()
+            );
+        }
+    }
+
 }

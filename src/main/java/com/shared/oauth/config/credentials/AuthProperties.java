@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Data
 public class AuthProperties {
     private String tokenUrl;
+    private String baseUrl;
     private String clientId;
     private String clientSecret;
 
