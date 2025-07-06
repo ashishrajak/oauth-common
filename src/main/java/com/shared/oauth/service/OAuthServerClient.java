@@ -85,7 +85,7 @@ public class OAuthServerClient {
     }
 
 
-    private UserInfoResponse fetchUserInfo(Jwt jwt) {
+    public UserInfoResponse fetchUserInfo(Jwt jwt) {
         try {
             return webClient.get()
                     .uri(authProperties.getBaseUrl()+"/oauth2/userinfo")  // Use configured userinfo endpoint
